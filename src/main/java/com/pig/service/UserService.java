@@ -32,8 +32,9 @@ public class UserService {
 
     public ResponseEntity<?> loginUser(SignInRequestDto signInRequestDto) throws Exception {
         final UserDetails userDetails = userDetailsService.loadUserByUsername(signInRequestDto.getUserId());
+        System.out.println("히");
         authenticate(signInRequestDto.getUserId(), signInRequestDto.getPw());
-
+        System.out.println("오");
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new JwtResponseDto(token));
