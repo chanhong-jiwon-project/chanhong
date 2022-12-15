@@ -1,6 +1,6 @@
 package com.pig.exception;
 
-import com.pig.exception.enums.ErrorCode;
+import com.pig.enums.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
