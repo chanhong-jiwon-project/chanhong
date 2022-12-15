@@ -1,11 +1,14 @@
 package com.pig.security;
 
 import com.pig.domain.User;
+import com.pig.enums.UserRole;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @RequiredArgsConstructor
@@ -13,10 +16,16 @@ import java.util.Collection;
 public class UserDetailsImpl implements UserDetails {
 
     private final User user;
-
+    private static final String ROLE_PREFIX = "ROLE_";
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        UserRole userRole = user.getRole();
+        System.out.println(userRole.toString() + " 로그인 중");
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(ROLE_PREFIX + userRole.toString());
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(authority);
+
+        return authorities;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.pig.exception.enums;
+package com.pig.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
